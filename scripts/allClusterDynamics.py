@@ -400,7 +400,7 @@ for clus in clus_to_run:
         all_dates = [
             datetime.datetime.strptime(x, "%Y-%m-%d")
             for x in temp_meta["date"]
-            if len(x) is 10
+            if len(x) == 10
             and "-XX" not in x
             and datetime.datetime.strptime(x, "%Y-%m-%d") >= cutoffDate
         ]
@@ -458,7 +458,7 @@ for clus in clus_to_run:
                 fh.write(
                     f"[Focal Build](https://nextstrain.org/groups/neherlab/ncov/{clus_display}?{url_params})\n\n"
                 )
-                if clus is "S501":
+                if clus == "S501":
                     fh.write(
                         f"Note any pre-2020 Chinese sequences are from SARS-like viruses in bats (not SARS-CoV-2).\n"
                     )
@@ -477,7 +477,7 @@ for clus in clus_to_run:
             fh.write(
                 f"[Focal Build](https://nextstrain.org/groups/neherlab/ncov/{clus_display}?{url_params})\n\n"
             )
-            if clus is "S501":
+            if clus == "S501":
                 fh.write(
                     f"Note any pre-2020 Chinese sequences are from SARS-like viruses in bats (not SARS-CoV-2).\n"
                 )
@@ -521,7 +521,7 @@ for clus in clus_to_run:
         for ri, row in temp_meta.iterrows():
             dat = row.date
             if (
-                len(dat) is 10 and "-XX" not in dat
+                len(dat) == 10 and "-XX" not in dat
             ):  # only take those that have real dates
                 dt = datetime.datetime.strptime(dat, "%Y-%m-%d")
                 # exclude sequences with identical dates & underdiverged
